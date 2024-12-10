@@ -99,6 +99,7 @@ const recommendList = ref([
     height: calc((100% - 15vw) / 2);
     background: url('@/assets/images/home/banner-search.png') center no-repeat;
     background-size: cover;
+    background-position-y: top;
     cursor: pointer;
     .flex(center, flex-start, column);
     padding-left: 3vw;
@@ -179,7 +180,7 @@ const recommendList = ref([
     }
   }
   &-list {
-    .flex(space-between, center);
+    .flex(flex-start, center);
     flex-wrap: wrap;
     column-gap: 12px;
   }
@@ -195,9 +196,6 @@ const recommendList = ref([
     margin-bottom: 20px;
     cursor: pointer;
     transition: all ease-in-out .5s;
-    &:last-child {
-      margin-left: 5vw;
-    }
     &:hover {
       color: #191919;
       background: url('@/assets/images/home/recommend-bg-selected.png') center no-repeat;

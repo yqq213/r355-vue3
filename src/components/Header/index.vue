@@ -1,5 +1,6 @@
 <template>
   <div class="header">
+    <img src="@/assets/images/logo.png" class="header-logo">
     <div class="header-first">
       <div class="search">
         <div class="search-icon">
@@ -108,6 +109,12 @@ function mouseEnterNav (e, item) {
   height: @header-height;
   padding-top: 30px;
   position: relative;
+  &-logo {
+    width: 250px;
+    position: absolute;
+    left: 30px;
+    top: 8px;
+  }
   &-first {
     .flex(space-between, flex-end);
     padding-right: 60px;
@@ -270,7 +277,7 @@ function mouseEnterNav (e, item) {
             margin-bottom: 20px;
           }
           .wrap-nav {
-            .flex(flex-start, center);
+            .flex(flex-start, flex-start);
             flex-direction: column;
           }
           .sub-nav {
@@ -361,6 +368,10 @@ function mouseEnterNav (e, item) {
     }
     .brand .navs-modal-content-right {
       width: 18vw;
+    }
+    &-logo {
+      width: 210px;
+      top: 22px;
     }
   }
 
