@@ -9,7 +9,7 @@ import zhCN from 'ant-design-vue/es/locale/zh_CN'
 
 const theme = {
   token: {
-    colorPrimary: '#1f9172'
+    colorPrimary: '#b89035'
   }
 }
 

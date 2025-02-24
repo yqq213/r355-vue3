@@ -70,9 +70,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       preprocessorOptions: {  // less全局预处理器
         less: {
           javascriptEnabled: true,
-          // modifyVars: {
-          //   'primary-color': 'rgba(31, 145, 114)'
-          // },
           additionalData: `@import "@/styles/variables.less";`
         },
       },

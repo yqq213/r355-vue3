@@ -11,6 +11,32 @@ const routes: RouteRecordRaw[] = [
     name: 'home',
     component: () => import('@/views/home/index.vue'),
   },
+  {
+    path: '/trend-analyse',
+    component: () => import('@/components/Layout/index.vue'),
+    children: [
+      {
+        path: 'index/:type',
+        name: 'trendAnalys',
+        component: () => import('@/views/trendAnalys/index.vue'),
+      },
+      {
+        path: 'detail/:id',
+        component: () => import('@/views/trendAnalys/detail.vue'),
+      }
+    ]
+  },
+  {
+    path: '/market-style',
+    component: () => import('@/components/Layout/index.vue'),
+    children: [
+      {
+        path: 'index',
+        name: 'marketStyle',
+        component: () => import('@/views/marketStyle/index.vue'),
+      },
+    ]
+  }
 ]
 
 const router = createRouter({

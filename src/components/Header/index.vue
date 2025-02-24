@@ -21,13 +21,13 @@
     <div class="navs">
       <li
         class="navs-item"
-        v-for="(item, index) in MenuList"
+        v-for="(item, index) in menuList"
         :key="index"
         @mouseenter="mouseEnterNav($event, item)"
         @mouseleave="navModalVisible = false"
       >
         <img :src="item.icon" v-if="item.icon" />
-        <span v-if="item.name">{{ item.name }}</span>
+        <span v-if="item.name" @click="jump(item.link)">{{ item.name }}</span>
       </li>
        <!-- 导航菜单箭头 -->
       <span
@@ -63,7 +63,7 @@
                 <p class="label">{{ item.name }}</p>
               </div>
               <div class="wrap-nav">
-                <li class="sub-nav" v-for="(child, index) in item.subMenu" :key="index">{{ child.name }}</li>
+                <li class="sub-nav" v-for="(child, index) in item.subMenu" :key="index" @click="jump(child.link)">{{ child.name }}</li>
               </div>
               <div class="desc" v-if="item.desc">{{ item.desc }}</div>
             </div>
@@ -84,7 +84,13 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import MenuList from '@/utils/menu'
+import { useRouter } from 'vue-router'
+import { menuList } from '@/utils/menu'
+import { useMenuStore } from '@/stores/menu'
+
+const menuStore = useMenuStore()
+
+const router = useRouter()
 
 const currentNav = ref({})
 
@@ -102,6 +108,14 @@ function mouseEnterNav (e, item) {
   navArrowDom!.style.left = (e.target.offsetLeft + 20 * (window.innerWidth / 1920)) + 'px'
 }
 
+// 跳转
+function jump(link) {
+  if (link) {
+    // menuStore.setCurrentMenu(currentNav.value)
+    router.push(link)
+  }
+}
+
 </script>
 
 <style lang="less" scoped>
@@ -109,6 +123,7 @@ function mouseEnterNav (e, item) {
   height: @header-height;
   padding-top: 30px;
   position: relative;
+  box-shadow: 0px 3px 5px 0px rgba(219, 217, 217, 0.63);
   &-logo {
     width: 250px;
     position: absolute;

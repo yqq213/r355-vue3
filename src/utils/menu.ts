@@ -1,8 +1,9 @@
+import { useRoute } from 'vue-router'
 import icon1 from '@/assets/images/header/dujiayuanchuang.png'
 import icon2 from '@/assets/images/header/zhutituce.png'
 import icon3 from '@/assets/images/header/ai_menu.png'
 import icon4 from '@/assets/images/header/yitusoutu.png'
-import qianxiweilai from '@/assets/images/header/qianxiweilai.png'
+import qushifenxi from '@/assets/images/header/qianxiweilai.png'
 import liuxingfenxi from '@/assets/images/header/liuxingfenxi.png'
 import shizhuangfabu from '@/assets/images/header/shizhuangfabu.png'
 import yuekan from '@/assets/images/header/yuekan.png'
@@ -19,72 +20,102 @@ import shangchangpinpai from '@/assets/images/header/shangchangpinpai.png'
 import yundongpinpai from '@/assets/images/header/yundongpinpai.png'
 import huwaipinpai from '@/assets/images/header/huwaipinpai.png'
 import shichangkuanshi from '@/assets/images/header/shichangkuanshi.png'
+import zhutifenxiSub from '@/assets/images/menu-icon/zhutifenxi.png'
+import secaiqushiSub from '@/assets/images/menu-icon/secaiqushi.png'
+import lingshoufenxiSub from '@/assets/images/menu-icon/lingshoufenxi.png'
+import mianliaoqushiSub from '@/assets/images/menu-icon/mianliaoqushi.png'
+import tuanqushiSub from '@/assets/images/menu-icon/tuanqushi.png'
 
-export default [
+export const getSubMenu = () => {
+  const route = useRoute()
+  const current = menuList.find(v => v.code === route.name)?.children ?? []
+  return current[0].subMenu ?? []
+}
+
+export const menuList = [
   {
     name: '首页',
-    link: '/home'
+    link: '/'
   },
   {
-    name: '浅析未来',
+    name: '趋势分析',
+    code: 'trendAnalys',
     background: 'rgb(0, 31, 62)',
     backgroundTop: 'rgb(174, 239, 207)',
     category_intro: '通过分析当前的时尚趋势、多元文化融合、科技创新和消费者行为等因素，来预测未来流行色彩、元素和风格。',
     children: [
       {
-        icon: qianxiweilai,
-        name: '浅析未来',
+        icon: qushifenxi,
+        name: '趋势分析',
         subMenu: [
           {
-            name: '色彩趋势',
-            link: ''
+            name: '主题分析',
+            link: '/trend-analyse/index/1',
+            desc: '多元文化融合',
+            subIcon: zhutifenxiSub
           },
           {
-            name: '图案趋势',
-            link: ''
+            name: '色彩趋势',
+            link: '/trend-analyse/index/2',
+            desc: '洞察前沿色彩',
+            subIcon: secaiqushiSub
+          },
+          {
+            name: '零售分析',
+            link: '/trend-analyse/index/3',
+            desc: '解读连接市场',
+            subIcon: lingshoufenxiSub
           },
           {
             name: '面料趋势',
-            link: ''
+            link: '/trend-analyse/index/4',
+            desc: '预测面料报告',
+            subIcon: mianliaoqushiSub
+          },
+          {
+            name: '图案趋势',
+            link: '/trend-analyse/index/5',
+            desc: '前瞻快讯推荐',
+            subIcon: tuanqushiSub
           }
         ]
       }
     ]
   },
-  {
-    name: '流行分析',
-    background: 'rgb(11, 136, 130)',
-    backgroundTop: 'rgb(255, 175, 204)',
-    category_intro: '对当前时尚趋势的细致观察和研究，了解正在流行，把握消费者的偏好变化，帮助更好的把握市场脉搏。',
-    children: [
-      {
-        icon: liuxingfenxi,
-        name: '流行分析',
-        subMenu: [
-          {
-            name: 'T台分析',
-            link: ''
-          },
-          {
-            name: '品牌分析',
-            link: ''
-          },
-          {
-            name: '零售分析',
-            link: ''
-          },
-          {
-            name: '展会分析',
-            link: ''
-          },
-          {
-            name: '订货会分析',
-            link: ''
-          },
-        ]
-      }
-    ]
-  },
+  // {
+  //   name: '流行分析',
+  //   background: 'rgb(11, 136, 130)',
+  //   backgroundTop: 'rgb(255, 175, 204)',
+  //   category_intro: '对当前时尚趋势的细致观察和研究，了解正在流行，把握消费者的偏好变化，帮助更好的把握市场脉搏。',
+  //   children: [
+  //     {
+  //       icon: liuxingfenxi,
+  //       name: '流行分析',
+  //       subMenu: [
+  //         {
+  //           name: 'T台分析',
+  //           link: ''
+  //         },
+  //         {
+  //           name: '品牌分析',
+  //           link: ''
+  //         },
+  //         {
+  //           name: '零售分析',
+  //           link: ''
+  //         },
+  //         {
+  //           name: '展会分析',
+  //           link: ''
+  //         },
+  //         {
+  //           name: '订货会分析',
+  //           link: ''
+  //         },
+  //       ]
+  //     }
+  //   ]
+  // },
   {
     name: '品牌图库',
     background: 'rgb(12, 53, 133)',
@@ -282,6 +313,7 @@ export default [
   },
   {
     name: '市场款式',
+    code: 'marketStyle',
     background: 'rgb(0, 0, 55)',
     backgroundTop: 'rgb(255, 119, 15)',
     category_intro: '对全国各地批发市场进行捕捉当季正在流行款式及爆款，让您第一时间掌握市场趋势。',
